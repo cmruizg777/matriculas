@@ -1,6 +1,6 @@
 <?
 //  Autentificator
-//  Gestión de Usuarios PHP+Mysql+sesiones
+//  Gestiï¿½n de Usuarios PHP+Mysql+sesiones
 //  by Pedro Noves V. (Cluster)
 //  clus@hotpop.com
 // -----------------------------------------
@@ -20,7 +20,7 @@ setcookie('id_alumno',0,time() + 365 * 24 * 60 * 60,'/');
 ?>
 <html>
 <head>
-<title>Area de Administración de http://www.tupagina.tal - Salir!</title>
-<meta http-equiv="Refresh" content="1;url=../main"></head>
+<title>Area de Administraciï¿½n de http://www.tupagina.tal - Salir!</title>
+<meta http-equiv="Refresh" content="1;url=../../"></head>
 </body>
 </html>
