@@ -9,10 +9,9 @@ try{
 		header ("Location: $redir?error_login=5");
 		exit;
 	}
-	$conn=getDatabaseConnection1($_COOKIE['base']);
+	$conn=getDatabaseConnection1($_COOKIE['base'], $_COOKIE['server']);
 
 	$action = $_POST['action'];
-	echo 'step1';
 
 	if($action == 1) {
 		$OParr = new CMySQL1(
@@ -24,11 +23,15 @@ try{
 			$OParr = new CMySQL1($conn,"INSERT INTO hermanos(al1, al2) VALUES (?,?)",array($_POST['al1'],$_POST['al2']));
 		}
 	}elseif ($action == 2){
-		$OParr=new CMySQL1(
-			$conn,
-			"delete from hermanos where (al1=? and al2=?) OR (al1=? and al2=?)",
-			array($_POST['al1'],$_POST['al2'],$_POST['al2'],$_POST['al1'])
-		);
+		$hermanos = $_POST['al2'];
+
+		foreach ( $hermanos as $hermano){
+			$OParr=new CMySQL1(
+				$conn,
+				"delete from hermanos where (al1=? and al2=?) OR (al1=? and al2=?)",
+				array($_POST['al1'],$hermano,$hermano,$_POST['al1'])
+			);
+		}
 	}
 
 	$h1=new CMySQL1($conn,"SELECT * FROM hermanos where al1=?",array($_POST['al1']));

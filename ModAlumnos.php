@@ -29,7 +29,7 @@ $ecivil = array("Soltero/a", "Casado/a", "Union libre o union de hecho", "Separa
 $porciones = explode(" ", $OClie->Row['alumno']);
 $ape1 = $porciones[0];
 $ape2 = $porciones[1];
-$Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE alumno like '%$ape1%'  OR  alumno like '%$ape2%' order by alumno", array());
+$Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno like '%$ape1%'  OR  alumno like '%$ape2%') and idalumno!=? order by alumno", array($OClie->Row['idalumno']));
 ?>
 <head>
 
@@ -558,15 +558,29 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE alumno l
                                             </div><!-- /.col-lg-6 -->
 
                                             <div class="col-6">
-                                                <label for="exampleInputEmail1">Lista de Hermanos en la Institucion
-                                                    :</label>
+                                                <div>
+                                                    <label for="exampleInputEmail1">Lista de Hermanos en la Institucion
+                                                        :</label>
 
 
-                                                <select multiple class="custom-select" id="cboh" onclick="borrah()">
-
-                                                </select>
-
-
+                                                    <select multiple class="custom-select" id="cboh">
+                                                        <?php
+                                                        $h1=new CMySQL1($conn,"SELECT * FROM hermanos where al1=?",array($OClie->Row['idalumno']));
+                                                        do{
+                                                            $Oal=new CMySQL1($conn,"SELECT idalumno,alumno FROM alumnos WHERE idalumno=?  order by alumnos.alumno",array($h1->Row['al2']));
+                                                            echo '<option value="'.$Oal->Row['idalumno'].'">'.$Oal->Row['alumno'].'</option>';
+                                                        }while($h1->GetRow());
+                                                        $h1=new CMySQL1($conn,"SELECT * FROM hermanos where al2=?",array($OClie->Row['idalumno']));
+                                                        do{
+                                                            $Oal=new CMySQL1($conn,"SELECT idalumno,alumno FROM alumnos WHERE idalumno=?  order by alumnos.alumno",array($h1->Row['al1']));
+                                                            echo '<option value="'.$Oal->Row['idalumno'].'">'.$Oal->Row['alumno'].'</option>';
+                                                        }while($h1->GetRow());
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-danger" onclick="borrah()">Borrar Hermano</button>
+                                                </div>
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
 
@@ -691,14 +705,17 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE alumno l
             document.getElementById('ci').focus();
 
             function borrah() {
-                if ($("#cboh").val() > 0) {
+                console.log($("#cboh").val())
+                if ($("#cboh").val().length > 0) {
                     $.post("hermanos.php", {
                         action: 2,
-                        del: $("#cboh").val(),
-                        alum: $("#idalumno").val()
+                        al1: $("#idalumno").val(),
+                        al2: $("#cboh").val()
                     }, function (data) {
                         $("#cboh").html(data);
                     });
+                }else{
+                    alertify.error('Debe seleccionar un hermano');
                 }
             }
 
@@ -708,12 +725,24 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE alumno l
                         "hermanos.php",
                         {action: 1, al1: $("#idalumno").val(), al2: $("#lista").val()},
                         function (data, status, xhr) {
-                            console.log(data, status, xhr)
                             $("#cboh").html(data);
                         }
                     );
                 }
             }
+
+            /*function getHermanos(){
+                console.log('Buscando hermanos ...')
+                $.post(
+                    "hermanos.php",
+                    {action: 3, al1: $("#idalumno").val()},
+                    function (data) {
+                        $("#cboh").html(data);
+                        console.log(data)
+                    }
+                );
+
+            }*/
 
             function validaCed() {
                 var cedula = document.getElementById('ci').value;
