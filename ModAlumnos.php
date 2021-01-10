@@ -63,8 +63,9 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                     <li class="nav-item">
                                         <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill"
                                            href="#custom-tabs-three-profile" role="tab"
-                                           aria-controls="custom-tabs-three-profile" aria-selected="false">DATOS DE LOS
-                                            PADRES DE FAMILIA</a>
+                                           aria-controls="custom-tabs-three-profile" aria-selected="false">
+                                            DATOS FAMILIARES
+                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill"
@@ -457,6 +458,28 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                                        id="organizacion"
                                                        value="<?php echo $OClie->Row['organizacion'] ?>">
                                             </div><!-- /.col-lg-6 -->
+                                        </div><!-- /.row -->
+                                        <div class="divider"></div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label for="exampleInputEmail1">Familiar Cercano:</label>
+                                                <input type="text" class="form-control input-sm" name="nfamiliar"
+                                                       id="nfamiliar" value="<?php echo $OClie->Row['familiar'] ?>">
+                                            </div><!-- /.col-lg-6 -->
+                                            <div class="col-6">
+                                                <label for="exampleInputEmail1">Teléfono del Familiar:</label>
+                                                <input type="text" class="form-control input-sm" name="telefonof"
+                                                       id="telefonof"
+                                                       value="<?php echo $OClie->Row['telefonof'] ?>">
+                                            </div><!-- /.col-lg-6 -->
+                                        </div><!-- /.row -->
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="exampleInputEmail1">Dirección del Familiar:</label>
+                                                <input type="text" class="form-control input-sm" name="direccionf"
+                                                       id="direccionf" value="<?php echo $OClie->Row['direccionf'] ?>">
+
+                                            </div><!-- /.col-lg-12-->
                                         </div><!-- /.row -->
                                     </div><!-- tab2-->
                                     <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel"

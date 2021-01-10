@@ -19,7 +19,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                               telefono=?, direccion=?, padre=?, padreP=?, madre=?, madreP=?, nhijos=?, orden=?, organizacion=?, 
                               pasaporte=?, ccp=?, ccm=?, mail=?, 	grupo_etnia=? ,provincia=?, canton=?, 
                               telp=?,telm=?,actividades=?,enfermedad=?,referencia=?,insp=?,insm=?,ecp=?,ecm=?,discapacidad=?,
-                              carnet=?,tipo_discapacidad=?,porcentaje=? where idalumno=?",
+                              carnet=?,tipo_discapacidad=?,porcentaje=?, familiar=?, telefonof=?, direccionf=? where idalumno=?",
                 $_COOKIE['base'],
                 $_COOKIE['server'],
                 array(
@@ -59,6 +59,9 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                     $_POST['carnet'],
                     $_POST['tipo_discapacidad'],
                     $_POST['porcentaje'],
+                    $_POST['nfamiliar'],
+                    $_POST['telefonof'],
+                    $_POST['direccionf'],
                     $_POST['idalumno'])
             );
 
@@ -102,10 +105,10 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 			}
 		}else{
 			$OEmp=new CMySQL(
-			    "INSERT INTO alumnos( ci, alumno,  nacionalidad, fechaN, lugarN, sexo, idetnias, telefono, direccion, padre, padreP, madre, madreP, nhijos, orden, organizacion, pasaporte, ccp, ccm, mail, 	grupo_etnia , provincia, canton, discapacidad, carnet, tipo_discapacidad, porcentaje) VALUES (?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,? ,?,?)",
+			    "INSERT INTO alumnos( ci, alumno,  nacionalidad, fechaN, lugarN, sexo, idetnias, telefono, direccion, padre, padreP, madre, madreP, nhijos, orden, organizacion, pasaporte, ccp, ccm, mail, 	grupo_etnia , provincia, canton, discapacidad, carnet, tipo_discapacidad, porcentaje, familiar, telefonof, direccionf) VALUES (?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,? ,?,?,?,?,?)",
                 $_COOKIE['base'],
                 $_COOKIE['server'],
-                array($_POST['ci'],$_POST['alumno'],$_POST['nacionalidad'],$_POST['fechaN'],$_POST['lugarN'],$_POST['sexo'],1,$_POST['telefono'],$_POST['direccion'],$_POST['padre'],$_POST['padreP'],$_POST['madre'],$_POST['madreP'],$_POST['nhijos'],$_POST['orden'],$_POST['organizacion'],11,$_POST['ccp'],$_POST['ccm'],$_POST['mail']," ",$_POST['provincia'],$_POST['canton'],1,0,0,0));
+                array($_POST['ci'],$_POST['alumno'],$_POST['nacionalidad'],$_POST['fechaN'],$_POST['lugarN'],$_POST['sexo'],1,$_POST['telefono'],$_POST['direccion'],$_POST['padre'],$_POST['padreP'],$_POST['madre'],$_POST['madreP'],$_POST['nhijos'],$_POST['orden'],$_POST['organizacion'],11,$_POST['ccp'],$_POST['ccm'],$_POST['mail']," ",$_POST['provincia'],$_POST['canton'],1,0,0,0,$_POST['nfamiliar'],$_POST['telefonof'],$_POST['direccionf']));
 			$id=$OEmp->GetLastId();
 			 setcookie('id_alumno',$id,time() + 365 * 24 * 60 * 60,'/');
 			 $OEmp->SetQuery("update preinscripcion set ci=? where ci=?",array($_POST['ci'],$_COOKIE['ci']));
