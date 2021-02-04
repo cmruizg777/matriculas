@@ -42,10 +42,10 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
     </div>
 
     <div class="card-body">
-        <form role="form" id="NuevoCli" method="post" action="javascript:GuardaCliente()">
+        <form role="form" id="NuevoCli" name="estudiante" method="post" action="">
             <div class="box-body">
                 <div align="right">
-                    <button type="submit" id="btnSave" class="btn btn-success dropzone-with-swa btn-sm"><i
+                    <button type="button" id="btnSave"  class="btn btn-success dropzone-with-swa btn-sm"><i
                                 class='fas fa-save'></i> Guardar
                     </button>
                 </div>
@@ -306,14 +306,14 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                                 <label for="exampleInputEmail1">Padre :</label>
 
                                                 <input type="text" class="form-control input-sm" name="padre" id="padre"
-                                                       value="<?php echo $OClie->Row['padre'] ?>">
+                                                       value="<?php echo $OClie->Row['padre'] ?>" required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Madre :</label>
 
                                                 <input type="text" class="form-control input-sm" name="madre" id="madre"
-                                                       value="<?php echo $OClie->Row['madre'] ?>">
+                                                       value="<?php echo $OClie->Row['madre'] ?>"  required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
@@ -322,7 +322,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                                 <label for="exampleInputEmail1">Profesion Padre :</label>
 
                                                 <input type="text" class="form-control input-sm" name="padreP"
-                                                       id="padreP" value="<?php echo $OClie->Row['padreP'] ?>">
+                                                       id="padreP" value="<?php echo $OClie->Row['padreP'] ?>"  required="required">
                                                 <!--select name="padreP"  id="padreP"class='form-control input-sm'>
                                                   <option value="" selected>Seleccione</option-->
                                                 <!--?php
@@ -340,7 +340,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Profesion Madre :</label>
                                                 <input type="text" class="form-control input-sm" name="madreP"
-                                                       id="madreP" value="<?php echo $OClie->Row['madreP'] ?>">
+                                                       id="madreP" value="<?php echo $OClie->Row['madreP'] ?>"  required="required">
                                                 <!--select name="madreP"  id="madreP"class='form-control input-sm' >
                                                      <option value="" selected>Seleccione</option-->
                                                 <!--?php
@@ -358,7 +358,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                         <div class="row">
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Instruccion Padre :</label>
-                                                <select name="insp" id="insp" class='form-control input-sm'>
+                                                <select name="insp" id="insp" class='form-control input-sm'  required="required">
                                                     <option value="" selected>Seleccione</option>
                                                     <?php
                                                     foreach ($instr as $v) {
@@ -374,7 +374,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Instruccion Madre :</label>
-                                                <select name="insm" id="insm" class='form-control input-sm'>
+                                                <select name="insm" id="insm" class='form-control input-sm'  required="required">
                                                     <option value="" selected>Seleccione</option>
                                                     <?php
                                                     foreach ($instr as $v) {
@@ -392,19 +392,19 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Cedula Padre :</label>
                                                 <input type="text" class="form-control input-sm" name="ccp" id="ccp"
-                                                       value="<?php echo $OClie->Row['ccp'] ?>">
+                                                       value="<?php echo $OClie->Row['ccp'] ?>"  required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Cedula Madre :</label>
                                                 <input type="text" class="form-control input-sm" name="ccm" id="ccm"
-                                                       value="<?php echo $OClie->Row['ccm'] ?>">
+                                                       value="<?php echo $OClie->Row['ccm'] ?>"  required="required">
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
                                         <div class="row">
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Estado Civil Padre :</label>
-                                                <select name="ecp" id="ecp" class='form-control input-sm'>
+                                                <select name="ecp" id="ecp" class='form-control input-sm'  required="required">
                                                     <option value="" selected>Seleccione</option>
                                                     <?php
                                                     foreach ($ecivil as $v) {
@@ -418,7 +418,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Estado Civil Madre :</label>
-                                                <select name="ecm" id="ecm" class='form-control input-sm'>
+                                                <select name="ecm" id="ecm" class='form-control input-sm'  required="required">
                                                     <option value="" selected>Seleccione</option>
                                                     <?php
                                                     foreach ($ecivil as $v) {
@@ -436,27 +436,27 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Telefono Padre :</label>
                                                 <input type="text" class="form-control input-sm" name="telp" id="telp"
-                                                       value="<?php echo $OClie->Row['telp'] ?>">
+                                                       value="<?php echo $OClie->Row['telp'] ?>"  required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Telefono Madre :</label>
                                                 <input type="text" class="form-control input-sm" name="telm" id="telm"
-                                                       value="<?php echo $OClie->Row['telm'] ?>">
+                                                       value="<?php echo $OClie->Row['telm'] ?>"  required="required">
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
                                         <div class="row">
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Numero de Hijos :</label>
                                                 <input type="text" class="form-control input-sm" name="nhijos"
-                                                       id="nhijos" value="<?php echo $OClie->Row['nhijos'] ?>">
+                                                       id="nhijos" value="<?php echo $OClie->Row['nhijos'] ?>"  required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Organizacion Conyugal :</label>
                                                 <input type="text" class="form-control input-sm" name="organizacion"
                                                        id="organizacion"
-                                                       value="<?php echo $OClie->Row['organizacion'] ?>">
+                                                       value="<?php echo $OClie->Row['organizacion'] ?>" required="required">
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
                                         <div class="divider"></div>
@@ -464,20 +464,20 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Familiar Cercano:</label>
                                                 <input type="text" class="form-control input-sm" name="nfamiliar"
-                                                       id="nfamiliar" value="<?php echo $OClie->Row['familiar'] ?>">
+                                                       id="nfamiliar" value="<?php echo $OClie->Row['familiar'] ?>" required="required">
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Teléfono del Familiar:</label>
                                                 <input type="text" class="form-control input-sm" name="telefonof"
                                                        id="telefonof"
-                                                       value="<?php echo $OClie->Row['telefonof'] ?>">
+                                                       value="<?php echo $OClie->Row['telefonof'] ?>" required="required">
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="exampleInputEmail1">Dirección del Familiar:</label>
                                                 <input type="text" class="form-control input-sm" name="direccionf"
-                                                       id="direccionf" value="<?php echo $OClie->Row['direccionf'] ?>">
+                                                       id="direccionf" value="<?php echo $OClie->Row['direccionf'] ?>" required="required">
 
                                             </div><!-- /.col-lg-12-->
                                         </div><!-- /.row -->
@@ -488,7 +488,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Parentezco :</label>
 
-                                                <select type="text" class="form-control input-sm" id="familiar">
+                                                <select type="text" class="form-control input-sm" id="familiar" required="required">
                                                     <option value="0" selected>Seleccione</option>
                                                     <option value="1">Madre</option>
                                                     <option value="2">Padre</option>
@@ -505,21 +505,21 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
 
                                                 <input type="text" class="form-control input-sm" name="representante"
                                                        id="representante"
-                                                       value="<?php echo $Omat->Row['representante'] ?>">
+                                                       value="<?php echo $Omat->Row['representante'] ?>" required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Cedula :</label>
 
                                                 <input type="text" class="form-control input-sm" name="ccr" id="ccr"
-                                                       value="<?php echo $Omat->Row['ccr'] ?>">
+                                                       value="<?php echo $Omat->Row['ccr'] ?>" required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
                                         <div class="row">
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Instruccion :</label>
-                                                <select name="insr" id="insr" class='form-control input-sm'>
+                                                <select name="insr" id="insr" class='form-control input-sm' required="required">
                                                     <option value="" selected>Seleccione</option>
                                                     <?php
                                                     foreach ($instr as $v) {
@@ -535,7 +535,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Profesion :</label>
                                                 <input type="text" class="form-control input-sm" name="profr" id="profr"
-                                                       value="<?php echo $OClie->Row['profr'] ?>">
+                                                       value="<?php echo $OClie->Row['profr'] ?>" required="required">
                                                 <!--select name="profr"  id="profr"class='form-control input-sm' >
                                                      <option value="" selected>Seleccione</option-->
                                                 <!--?php
@@ -555,7 +555,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Telefono :</label>
                                                 <input type="text" class="form-control input-sm" name="telefonoR"
-                                                       id="telefonoR" value="<?php echo $Omat->Row['telefonoR']; ?>">
+                                                       id="telefonoR" value="<?php echo $Omat->Row['telefonoR']; ?>" required="required">
                                             </div><!-- /.col-lg-6 -->
 
                                             <div class="col-6">
@@ -615,7 +615,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Dispone de Internet en su Casa:</label>
                                                 <select name="internet" id="internet" class='form-control input-sm'
-                                                        onChange="verInter(this.value)" required>
+                                                        onChange="verInter(this.value)"  required="required">
                                                     <?php $a = array(0 => "No", 1 => "Si");
                                                     foreach ($a as $v => $t) {
                                                         if (strtoupper($Omedios->Row['internet']) == $v)
@@ -630,7 +630,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Tipo de Internet :</label>
                                                 <select name="tipointernet" id="tipointernet"
-                                                        class='form-control input-sm' required>
+                                                        class='form-control input-sm'  required="required">
                                                     <?php $a = array(1 => "RECARGAS", 2 => "PLAN FIJO EN CASA", 3 => "PLAN DE DATOS EN CELULAR");
                                                     echo "<option value=\"0\" selected>Seleccione</option>";
                                                     foreach ($a as $v => $t) {
@@ -648,7 +648,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                                     :</label>
                                                 <input type="text" class="form-control input-sm" name="nusuarios"
                                                        id="nusuarios" value="<?php echo $Omedios->Row['nusuarios']; ?>"
-                                                       data-inputmask='"mask": "99"' data-mask>
+                                                       data-inputmask='"mask": "99"' data-mask required="required">
                                             </div><!-- /.col-lg-6 -->
 
                                             <div class="col-6">
@@ -656,7 +656,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                                     de Tareas :</label>
                                                 <input type="text" class="form-control input-sm" name="comunicacion"
                                                        id="comunicacion"
-                                                       value="<?php echo $Omedios->Row['comunicacion'] ?>">
+                                                       value="<?php echo $Omedios->Row['comunicacion'] ?>" required="required">
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
                                         <div class="row">
@@ -666,7 +666,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
 
                                                 <input type="text" class="form-control input-sm" name="asig_favoritas"
                                                        id="asig_favoritas"
-                                                       value="<?php echo $Omedios->Row['asig_favoritas'] ?>">
+                                                       value="<?php echo $Omedios->Row['asig_favoritas'] ?>" required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                             <div class="col-6">
@@ -675,7 +675,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
 
                                                 <input type="text" class="form-control input-sm" name="asig_dificiles"
                                                        id="asig_dificiles"
-                                                       value="<?php echo $Omedios->Row['asig_dificiles'] ?>">
+                                                       value="<?php echo $Omedios->Row['asig_dificiles'] ?>"  required="required">
 
                                             </div><!-- /.col-lg-6 -->
                                         </div><!-- /.row -->
@@ -700,7 +700,6 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
         </section>
         <?php $conn = null; ?>
         <script>
-
             document.getElementById('familiar').onchange = function () {
                 var valor = this.value;
                 if (valor == 1) {
@@ -854,25 +853,79 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
 
             }
 
-            function GuardaCliente() {
-                $('#btnSave').attr('disabled', true);
-                var str = $("#NuevoCli").serialize();
-                $.ajax({
-                    url: 'AjaxModAlumno.php',
-                    type: 'POST',
-                    data: str,
-                }).done(function (respuesta) {
+            let GuardaCliente = function () {
+                /*
+                document.forms['estudiante']['ci']
+                document.forms['estudiante']['alumno']
+                document.forms['estudiante']['nacionalidad']
+                document.forms['estudiante']['fechaN']
+                document.forms['estudiante']['lugarN']
+                document.forms['estudiante']['sexo']
+                document.forms['estudiante']['idetnias']
+                document.forms['estudiante']['telefono']
+                document.forms['estudiante']['direccion']
+                document.forms['estudiante']['padre']
+                document.forms['estudiante']['padreP']
+                document.forms['estudiante']['madre']
+                document.forms['estudiante']['madreP']
+                document.forms['estudiante']['nhijos']
+                document.forms['estudiante']['orden']
+                document.forms['estudiante']['organizacion']
+                document.forms['estudiante']['ccp']
+                document.forms['estudiante']['ccm']
+                document.forms['estudiante']['mail']
+                document.forms['estudiante']['provincia']
+                document.forms['estudiante']['canton']
+                document.forms['estudiante']['telp']
+                document.forms['estudiante']['telm']
+                document.forms['estudiante']['actividades']
+                document.forms['estudiante']['enfermedad']
+                document.forms['estudiante']['referencia']
+                document.forms['estudiante']['insp']
+                document.forms['estudiante']['insm']
+                document.forms['estudiante']['ecp']
+                document.forms['estudiante']['ecm']
+                document.forms['estudiante']['discapacidad']
+                document.forms['estudiante']['carnet']
+                document.forms['estudiante']['tipo_discapacidad']
+                document.forms['estudiante']['porcentaje']
+                document.forms['estudiante']['nfamiliar']
+                document.forms['estudiante']['telefonof']
+                document.forms['estudiante']['direccionf']
+                document.forms['estudiante']['idalumno']*/
+                try{
+                    let elements = document.forms['estudiante'].elements;
+                    let counter = 0;
+                    for (let i = 0; i < elements.length; i++ ){
+                        if(!elements[i].checkValidity()){
+                            counter ++;
+                        }
+                    }
+                    if (counter == 0){
+                        $('#btnSave').attr('disabled', true);
+                        var str = $("#NuevoCli").serialize();
+                        $.ajax({
+                            url: 'AjaxModAlumno.php',
+                            type: 'POST',
+                            data: str,
+                        }).done(function (respuesta) {
 
-                    if (respuesta != 0) {
-                        alertify.success('Sus Datos se Actualizaron Correctamente');
-                        $("#idalumno").val(respuesta);
-                    } else
-                        alertify.error('Ocurrion Algun Error');
-                    $('#ci').focus();
-                    $('#btnSave').attr('disabled', false);
-                });
+                            if (respuesta != 0) {
+                                alertify.success('Sus Datos se Actualizaron Correctamente');
+                                $("#idalumno").val(respuesta);
+                            } else
+                                alertify.error('Ocurrion Algun Error');
+                            $('#ci').focus();
+                            $('#btnSave').attr('disabled', false);
+                        });
+                    }else{
+                        alertify.error(`Hay ${counter} campos sin llenar correctamente. Por favor revise sus datos y vuelva a intentarlo nuevamente.`);
+                    }
+                }catch (e) {
+                    console.log(e)
+                }
             }
-
+            document.getElementById("btnSave").onclick = GuardaCliente;
             function borrar() {
                 if (confirm("Seguro desea Eliminar"))
                     RComando('del=' + document.getElementById('Id').value, 'Modalumnos.php');
