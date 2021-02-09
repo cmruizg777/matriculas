@@ -131,7 +131,7 @@ if ($usuario_datos->GetNRows() != 0) {
 		 header ("Location: $redir?error_login=3&idinst=".$_POST['id']."&server=".$_POST['server']);
 	    exit;
 	}
-    $Oper=new CMySQL1($conn,"select idperiodo from periodo  order by idperiodo desc limit 1 ",array($action));
+    $Oper=new CMySQL1($conn,"select idperiodo from periodo  order by idperiodo desc limit 1 ",[]);
 	$OCurso=new CMySQL1($conn,"SELECT cursos.curso FROM alumnos,matricula,cursos WHERE cursos.idcurso=matricula.idcurso and alumnos.idalumno=matricula.idalumno and matricula.estado=1 and alumnos.idalumno=? and matricula.idperiodo=?",array($usuario_datos->Row['idalumno'],$Oper->Row['idperiodo']));
 	if($band==0)
   	 setcookie('id_alumno',$usuario_datos->Row['idalumno'],time() + 365 * 24 * 60 * 60,'/');
