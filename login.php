@@ -169,7 +169,7 @@ else {
 				</form>
 
 				<div class="login100-more" style="background-image: url('images/bg-02.jpg');"><span class="login100-form-title p-b-43 " style="">
-						</br></br><strong><?php echo $Ocole->Row['nombre']?></strong>
+						</br></br><strong class="text-white"><?php echo $Ocole->Row['nombre']?></strong>
 					</span>
 				</div>
 		  </div>
