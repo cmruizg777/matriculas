@@ -85,7 +85,9 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="index.php?forma=ModAlumnos.php" class="nav-link"><i class="fas fa-edit"></i> Actualizar Datos</a>
             </li>
-
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="index.php?forma=ModNotas.php" class="nav-link"><i class="fas fa-table"></i> Notas</a>
+            </li>
         </ul>
 
         <!-- SEARCH FORM -->
@@ -137,7 +139,12 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
                                     <p>Actualizar Datos</p>
                                 </a>
                             </li>
-
+                            <li class="nav-item">
+                                <a href="index.php?forma=ModNotas.php" class="nav-link active">
+                                    <i class="nav-icon fas fa-table"></i>
+                                    <p>Notas</p>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="usuarios/aut_logout.php" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
@@ -158,8 +165,10 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <?php if($forma!="")
-            include($forma)
+        <?php
+            if($forma!="") {
+                include($forma);
+            }
         ?>
         <!-- /.content -->
     </div>
