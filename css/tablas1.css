@@ -1,0 +1,142 @@
+.tableone {width:100%; border-collapse:collapse; margin:0 auto;}
+.tabletwo {width:99%; border-collapse:collapse;}
+.th1 {width:10%;}
+.th2 {width:10%;}
+.th3 {width:5%;}
+.th4 {width:28%;}
+.th5 {width:8%;}
+.th6 {width:30%;}
+.th7 {width:10%;}
+.th8 {width:12%;}
+.th9 {width:24%;}
+
+.td1 {width:10%;}
+.td2 {width:10%;}
+.td3 {width:5%;}
+.td4 {width:28%;}
+.td5 {width:8%;}
+.td6 {width:30%;}
+.td7 {width:10%;}
+.td8 {width:12%;}
+.td9 {width:24%;}
+.tableone {background:#3c8dbc; border:1px solid #fff; color:#fff;}
+.tableone td {border:1px solid #697210 ; color:#697210;}
+.tableone tbody {background:#eee; color:#000;}
+.tableone caption {background:#fff; color:#697210; font-size:1.2em; margin:0 auto;}
+.tabletwo td {background:#FFFFFF; color:#000;}
+.tableone th, .tabletwo th {text-align:left;}
+.tabletwo tr.dk td {background:#FFFFFF; color:#9c9c9c ;}
+
+.innerb {height:10em; overflow:auto;}
+
+/*scroll de facebook*/
+.styled-v-bar{ /* sample CSS class for a different vertical scrollbar look */
+	background:	url(custom-scroll-bar.png) center top no-repeat;
+	width: 10px;
+	margin-right: 0;
+	margin-bottom: 4px;
+}
+
+.styled-v-bar ins{ /* Style for the "ins" inner element, or bottom of the scrollbar */ 
+	display: block;
+	background:	url(custom-scroll-bar.png) kcenter bottom no-repeat;
+	width: 10px;
+	height: 4px;
+	position: absolute;
+	top: 100%;
+}
+
+
+input.texto{
+	/*width:50px;*/
+	height:25px;
+	border-style:solid;
+	border-color:#ff0000;
+	background-color:#FFFFFF;
+	font-family:tahoma,arial,sans-serif;
+	font-size:14px;
+	color:#0099FF;
+	border: 1px solid #0099FF;
+	border-radius: 3px ;
+	-moz-border-radius:3px;
+	-webkit-border-radius: 3px ;
+}
+
+input.textod{
+	/*width:50px;*/
+	height:25px;
+	border-style:solid;
+	border-color:#ff0000;
+	background-color:#FFFFFF;
+	font-family:tahoma,arial,sans-serif;
+	font-size:14px;
+	text-align:right;
+	border: 1px solid #0099FF;
+	border-radius: 3px ;
+	-moz-border-radius:3px;
+	-webkit-border-radius: 3px ;
+}
+
+input.texto1{
+	/*width:50px;*/
+	height:25px;
+	border-style:none;
+	/*border-colkor:#ff0000;*/
+	background-color:transparent;
+	font-family:tahoma,arial,sans-serif;
+	font-size:14px;
+	
+	/*border: 1px solid #0099FF;
+	/*border-radius: 3px ;
+	-moz-border-radius:3px;
+	-webkit-border-radius: 3px ;*/
+}
+
+input.textod1{
+	/*width:50px;*/
+	height:25px;
+	border-style:none;
+	/*border-color:#ff0000;*/
+	background-color:transparent;
+	font-family:tahoma,arial,sans-serif;
+	font-size:14px;
+	text-align:right;
+	/*border: 1px solid #0099FF;
+	border-radius: 3px ;
+	-moz-border-radius:3px;
+	-webkit-border-radius: 3px ;*/
+}
+
+input.textod2{
+	/*width:50px;*/
+	height:25px;
+	border-style:none;
+	/*border-color:#ff0000;*/
+	background-color:transparent;
+	font-family:tahoma,arial,sans-serif;
+	font-size:14px;
+	text-align:right;
+	color:#D84141;
+}
+input.texto2{
+	/*width:50px;*/
+	height:25px;
+	border-style:none;
+	/*border-color:#ff0000;*/
+	background-color:transparent;
+	font-family:tahoma,arial,sans-serif;
+	font-size:14px;
+	text-align:left;
+	color:#D84141;
+}
+
+
+.textob{
+	background-color: transparent;
+	border:0px;border-style:none;
+	font-family:tahoma,arial,sans-serif;
+	font-size:14px;
+	scrollbar-arrow-color: #ff0000;
+	scrollbar-base-color: #ff0000;scrollbar-dark-shadow-color: #336699;scrollbar-track-color: #666633;scrollbar-face-color: #cc9933;scrollbar-shadow-color: #DDDDDD;scrollbar-highlight-color: #CCCCCC;
+}
+
