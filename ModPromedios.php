@@ -24,6 +24,7 @@
                 and materias.idmateria=slqnotasunion_aux.idmateria 
                 And cursos.idcurso=slqnotasunion_aux.idcurso 
                 And cursos.idcurso=? 
+                And evaluada != 'No'
                 And slqnotasunion_aux.idalumno=? order by slqnotasunion_aux.orden ASC";
 
 $promedio = new CMySQL1($conn, $sql2, array($idcurso, $idalumno));

@@ -63,6 +63,7 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
     <link rel="stylesheet" href="alertify/semantic.min.css"/>
     <!-- Bootstrap theme -->
     <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
     <!--
         RTL version
     -->
@@ -85,9 +86,15 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="index.php?forma=ModAlumnos.php" class="nav-link"><i class="fas fa-edit"></i> Actualizar Datos</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="index.php?forma=ModNotas.php" class="nav-link"><i class="fas fa-table"></i> Notas</a>
-            </li>
+            <?php
+                if ($Ocole->Row['notas'] == 1){
+                    ?>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="index.php?forma=ModNotas.php" class="nav-link"><i class="fas fa-table"></i> Notas</a>
+                    </li>
+            <?php
+                }
+            ?>
         </ul>
 
         <!-- SEARCH FORM -->
@@ -139,12 +146,18 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
                                     <p>Actualizar Datos</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="index.php?forma=ModNotas.php" class="nav-link active">
-                                    <i class="nav-icon fas fa-table"></i>
-                                    <p>Notas</p>
-                                </a>
-                            </li>
+                            <?php
+                            if ($Ocole->Row['notas'] == 1){
+                                ?>
+                                <li class="nav-item">
+                                    <a href="index.php?forma=ModNotas.php" class="nav-link active">
+                                        <i class="nav-icon fas fa-table"></i>
+                                        <p>Notas</p>
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                            ?>
                             <li class="nav-item">
                                 <a href="usuarios/aut_logout.php" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
@@ -223,5 +236,14 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- GENERADOR DE PDFs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.0/jspdf.umd.min.js"></script>
+<script>
+    $("#imprimir").click(function(){
+        var doc = new jsPDF()
+        doc.text('Hello world!', 10, 10)
+        doc.save('a4.pdf')
+    })
+</script>
 </body>
 </html>

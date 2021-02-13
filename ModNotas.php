@@ -27,10 +27,16 @@ $idcurso  = $_COOKIE['id_curso'];
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title" id="titulo"> Libreta de calificaciones</h3>
+        <a href="./ModImprimir.php" target="_blank" class="btn btn-success float-sm-right" type="button" id="imprimir">
+            Descargar/Imprimir
+        </a>
     </div>
     <div class="card-body">
-        <table class="table table-responsive-sm table-bordered table-hover table-small">
+        <table class="table table-responsive-sm table-bordered table-hover table-small" id="cuantitativas">
             <thead>
+            <tr class="bg-dark">
+                <th colspan="22">NOTAS CUANTITATIVAS</th>
+            </tr>
             <tr>
                 <th rowspan="3">Asignatura</th>
                 <th colspan="9">PRIMER QUIMESTRE</th>
@@ -92,13 +98,56 @@ $idcurso  = $_COOKIE['id_curso'];
             </tbody>
         </table>
         <div class="row">
-            <div class="col-md-6">
-                <?php include ('ModComportamiento.php');?>
+
+            <div class="col-md-6 align-self-end">
+                <?php
+                include ('ModCualitativas.php');
+                if ($notasc->GetNRows() > 0) {
+
+                    ?>
+
+                    <table class="table table-responsive-sm table-bordered table-hover table-small" id="cualitativas">
+                        <thead>
+                        <tr class="bg-dark">
+                            <th colspan="22">NOTAS CUALITATIVAS</th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">ASIGNATURA</th>
+                            <th colspan="2">PRIMER QUIMESTRE</th>
+                            <th colspan="2">SEGUNDO QUIMESTRE</th>
+                        </tr>
+                        <tr>
+                            <th>P1</th>
+                            <th>P2</th>
+                            <th>P1</th>
+                            <th>P2</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        do {
+                            echo "<tr>";
+                            printf("<td>%s</td>", $notasc->Row['materia']);
+                            printf("<td>%s</td>", $notasc->Row['cualip1q1']);
+                            printf("<td>%s</td>", $notasc->Row['cualip2q1']);
+                            printf("<td>%s</td>", $notasc->Row['cualip1q2']);
+                            printf("<td>%s</td>", $notasc->Row['cualip2q2']);
+                            echo "</tr>";
+                        } while ($notasc->GetRow());
+                        ?>
+                        </tbody>
+                    </table>
+                <?php
+                }
+                ?>
             </div>
+
+            <?php include ('ModComportamiento.php');?>
+
         </div>
         <div class="row">
             <div class="col-md-6">
-                <table class="table table-responsive table-bordered table-small">
+                <table class="table table-responsive table-bordered table-small" id="escalaC">
                     <thead>
                     <tr class="bg-info">
                         <th colspan="3">ESCALA DE EVALUACIÓN DE COMPORTAMIENTO</th>
@@ -134,7 +183,7 @@ $idcurso  = $_COOKIE['id_curso'];
                 </table>
             </div>
             <div class="col-md-6">
-                <table class="table table-responsive table-bordered table-small">
+                <table class="table table-responsive table-bordered table-small" id="escalaR">
                     <thead>
                     <tr class="bg-info">
                         <th colspan="3">ESCALA DE CALIFICACIONES DEL RENDIMIENTO ACADÉMICO</th>
@@ -169,5 +218,3 @@ $idcurso  = $_COOKIE['id_curso'];
 
     </div>
 </body>
-
-

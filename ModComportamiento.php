@@ -41,12 +41,12 @@
                 AND alumnos.idalumno=?";
 
 $comportamiento = new CMySQL1($conn, $sql3, array($idcurso, $idalumno));
-
+echo '<div class="col-md-6">';
 ?>
 
-<table class="table table-responsive-sm table-bordered table-hover table-small">
+<table class="table table-responsive-sm table-bordered table-hover table-small" id="comportamiento">
     <thead>
-    <tr class="bg-success">
+    <tr class="bg-dark">
         <th colspan="9">Comportamiento y Asistencia</th>
     </tr>
     <tr class="bg-primary">
@@ -118,7 +118,5 @@ $comportamiento = new CMySQL1($conn, $sql3, array($idcurso, $idalumno));
             printf('<td>%s</td>',$comportamiento->Row['diasa']);
             echo '</tr>';
         }while($comportamiento->GetRow());
+        echo '</tbody></table></div>'
         ?>
-    </tbody>
-</table>
-
