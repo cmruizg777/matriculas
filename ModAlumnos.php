@@ -909,13 +909,13 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                             type: 'POST',
                             data: str,
                         }).done(function (respuesta) {
-                            console.log(respuesta);
-                            /*if (respuesta != 0) {
+                            //console.log(respuesta);
+                            if (respuesta != 0) {
                                 alertify.success('Sus Datos se Actualizaron Correctamente');
                                 $("#idalumno").val(respuesta);
                             } else
-                                alertify.error('Ocurrion Algun Error');*/
-                            //$('#ci').focus();
+                                alertify.error('Ocurrion Algun Error');
+                            $('#ci').focus();
                             $('#btnSave').attr('disabled', false);
                         });
                     }else{
