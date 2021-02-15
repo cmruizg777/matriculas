@@ -25,6 +25,14 @@ class CMySQL extends PDO {
             $this->Query=$this->prepare($SQuery);
             //foreach($parametros as $campo=>$dato)
             // $this->Query->bindParam($campo,$dato);
+           /* $queries = explode('?', $SQuery);
+            $str = '';
+            $counter = 0;
+            foreach ($queries as $query){
+                $str.= $query."'".$parametros[$counter]."'";
+                $counter++;
+            }
+            print_r($str);*/
             $this->Query->execute($parametros);
             $this->Row=$this->Query->fetch();
         }
@@ -82,7 +90,8 @@ class CMySQL1 extends PDO  {
             $this->Query=$connection->prepare($SQuery);
             //foreach($parametros as $campo=>$dato)
             // $this->Query->bindParam($campo,$dato);
-            $this->Query->execute($parametros);
+            $test = $this->Query->execute($parametros);
+
             $this->Row=$this->Query->fetch();
         }
         return $this->Row;

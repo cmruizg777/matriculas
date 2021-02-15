@@ -535,7 +535,7 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                                             <div class="col-6">
                                                 <label for="exampleInputEmail1">Profesion :</label>
                                                 <input type="text" class="form-control input-sm" name="profr" id="profr"
-                                                       value="<?php echo $OClie->Row['profr'] ?>" required="required">
+                                                       value="<?php echo $Omat->Row['profr'] ?>" required="required">
                                                 <!--select name="profr"  id="profr"class='form-control input-sm' >
                                                      <option value="" selected>Seleccione</option-->
                                                 <!--?php
@@ -909,13 +909,13 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                             type: 'POST',
                             data: str,
                         }).done(function (respuesta) {
-
-                            if (respuesta != 0) {
+                            console.log(respuesta);
+                            /*if (respuesta != 0) {
                                 alertify.success('Sus Datos se Actualizaron Correctamente');
                                 $("#idalumno").val(respuesta);
                             } else
-                                alertify.error('Ocurrion Algun Error');
-                            $('#ci').focus();
+                                alertify.error('Ocurrion Algun Error');*/
+                            //$('#ci').focus();
                             $('#btnSave').attr('disabled', false);
                         });
                     }else{

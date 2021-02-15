@@ -11,66 +11,34 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	//print_r($_POST);
 		$conn=getDatabaseConnection1($_COOKIE['base'],$_COOKIE['server']);
 		if($_POST['idalumno']>0){
+
 		    //print_r($_COOKIE['base']);
             //print_r($_COOKIE['server']);
+            $parametros = array(
+                $_POST['ci'], $_POST['alumno'], $_POST['nacionalidad'], $_POST['fechaN'], $_POST['lugarN'], $_POST['sexo'], $_POST['idetnias'],
+                $_POST['telefono'], $_POST['direccion'], $_POST['padre'], $_POST['padreP'], $_POST['madre'], $_POST['madreP'], $_POST['nhijos'], $_POST['orden'], $_POST['organizacion'],
+                11, $_POST['ccp'], $_POST['ccm'], $_POST['mail'], $_POST['maile']," ", $_POST['provincia'], $_POST['canton'],
+                $_POST['telp'], $_POST['telm'], $_POST['actividades'], $_POST['enfermedad'], $_POST['referencia'], $_POST['insp'], $_POST['insm'], $_POST['ecp'], $_POST['ecm'], $_POST['discapacidad'],
+                $_POST['carnet'], $_POST['tipo_discapacidad'], $_POST['porcentaje'], $_POST['nfamiliar'], $_POST['telefonof'], $_POST['direccionf'], $_POST['idalumno']);
+
 			$OEmp=new CMySQL(
                 //"UPDATE alumnos SET   where idalumno=?",
                 "UPDATE alumnos SET  ci=?, alumno=?,  nacionalidad=?, fechaN=?, lugarN=?, sexo=?, idetnias=?, 
                               telefono=?, direccion=?, padre=?, padreP=?, madre=?, madreP=?, nhijos=?, orden=?, organizacion=?, 
-                              pasaporte=?, ccp=?, ccm=?, mail=?, 	grupo_etnia=? ,provincia=?, canton=?, 
+                              pasaporte=?, ccp=?, ccm=?, mail=?, maile=?,	grupo_etnia=? ,provincia=?, canton=?, 
                               telp=?,telm=?,actividades=?,enfermedad=?,referencia=?,insp=?,insm=?,ecp=?,ecm=?,discapacidad=?,
                               carnet=?,tipo_discapacidad=?,porcentaje=?, familiar=?, telefonof=?, direccionf=? where idalumno=?",
                 $_COOKIE['base'],
                 $_COOKIE['server'],
-                array(
-                    $_POST['ci'],
-                    $_POST['alumno'],
-                    $_POST['nacionalidad'],
-                    $_POST['fechaN'],
-                    $_POST['lugarN'],
-                    $_POST['sexo'],
-                    $_POST['idetnias'],
-                    $_POST['telefono'],
-                    $_POST['direccion'],
-                    $_POST['padre'],
-                    $_POST['padreP'],
-                    $_POST['madre'],
-                    $_POST['madreP'],
-                    $_POST['nhijos'],
-                    $_POST['orden'],
-                    $_POST['organizacion'],
-                    11,
-                    $_POST['ccp'],
-                    $_POST['ccm'],
-                    $_POST['mail'],
-                    " ",
-                    $_POST['provincia'],
-                    $_POST['canton'],
-                    $_POST['telp'],
-                    $_POST['telm'],
-                    $_POST['actividades'],
-                    $_POST['enfermedad'],
-                    $_POST['referencia'],
-                    $_POST['insp'],
-                    $_POST['insm'],
-                    $_POST['ecp'],
-                    $_POST['ecm'],
-                    $_POST['discapacidad'],
-                    $_POST['carnet'],
-                    $_POST['tipo_discapacidad'],
-                    $_POST['porcentaje'],
-                    $_POST['nfamiliar'],
-                    $_POST['telefonof'],
-                    $_POST['direccionf'],
-                    $_POST['idalumno'])
+                $parametros
             );
-
+            /*
 			$OEmp=new CMySQL(
                 "update preinscripcion set ci=? where ci=?",
                 $_COOKIE['base'],
                 $_COOKIE['server'],
                 array($_POST['ci'],$_COOKIE['ci'])
-            );
+            );*/
 
 			setcookie('ci',$_POST['ci'],time() + 365 * 24 * 60 * 60,'/');
 			$id=$_POST['idalumno'];
