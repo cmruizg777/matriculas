@@ -35,7 +35,7 @@ do{
     printf("<td>%.2f</td>",round($promedio->Row['parcial1'],2));
     printf("<td>%.2f</td>",round($promedio->Row['parcial2'],2));
     printf("<td>%.2f</td>",round($promedio->Row['promediop'],2));
-    printf("<td>%.2f</td>",round($promedio->Row['promedio80'],2));
+    printf("<td>%.2f</td>",round($promedio->Row['promediop80'],2));
     printf("<td>%.2f</td>",round($promedio->Row['autoevaluacion'],2));
     printf("<td>%.2f</td>",round($promedio->Row['examen'],2));
     printf("<td>%.2f</td>",round($promedio->Row['examen20'],2));
@@ -44,7 +44,7 @@ do{
     printf("<td>%.2f</td>",round($promedio->Row['parcial12'],2));
     printf("<td>%.2f</td>",round($promedio->Row['parcial22'],2));
     printf("<td>%.2f</td>",round($promedio->Row['promediop2'],2));
-    printf("<td>%.2f</td>",round($promedio->Row['promedio802'],2));
+    printf("<td>%.2f</td>",round($promedio->Row['promediop802'],2));
     printf("<td>%.2f</td>",round($promedio->Row['autoevaluacion2'],2));
     printf("<td>%.2f</td>",round($promedio->Row['examen2'],2));
     printf("<td>%.2f</td>",round($promedio->Row['examen202'],2));
