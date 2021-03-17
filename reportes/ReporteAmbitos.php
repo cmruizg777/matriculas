@@ -102,11 +102,20 @@ $ambitos = new CMySQL1($conn, $sql1, array($idcurso,$sec,$idalumno));
             <table class="table table-responsive-sm table-bordered table-hover table-small" id="ambitos">
                 <thead>
                 <tr>
-                    <th rowspan="1">AMBITOS DE DESARROLLO Y APRENDIZAJE</th>
+                    <th rowspan="2">AMBITOS DE DESARROLLO Y APRENDIZAJE</th>
                     <th colspan="4">PRIMER QUIMESTRE</th>
                     <th colspan="4">SEGUNDO QUIMESTRE</th>
                 </tr>
-
+                <tr>
+                    <th>I</th>
+                    <th>EP</th>
+                    <th>A</th>
+                    <th>N/E</th>
+                    <th>I</th>
+                    <th>EP</th>
+                    <th>A</th>
+                    <th>N/E</th>
+                </tr>
                 </thead>
                 <tbody>
                 <?php
@@ -116,15 +125,7 @@ $ambitos = new CMySQL1($conn, $sql1, array($idcurso,$sec,$idalumno));
                 do{
                     if($aux != $ambitos->Row['ambito']){
                         echo '<tr class="bg-primary">';
-                        printf('<th>%s</th>',$ambitos->Row['ambito']);
-                        echo '<th>I</th>';
-                        echo '<th>EP</th>';
-                        echo '<th>A</th>';
-                        echo '<th>N/E</th>';
-                        echo '<th>I</th>';
-                        echo '<th>EP</th>';
-                        echo '<th>A</th>';
-                        echo '<th>N/E</th>';
+                        printf('<th colspan="9">%s</th>',$ambitos->Row['ambito']);
                         echo '</tr>';
                         $cont=1;
                     }
