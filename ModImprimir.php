@@ -4,7 +4,13 @@ require_once './dompdf/autoload.inc.php';
 
 $dompdf = new \Dompdf\Dompdf();
 
-$html = render('./reportes/ReporteCalificaciones.php');
+$idmodo = $_COOKIE['idmodo'];
+if($idmodo!=2){
+    $html = render('./reportes/ReporteCalificaciones.php');
+}else{
+    $html = render('./reportes/ReporteAmbitos.php');
+}
+
 $dompdf->loadHtml($html);
 
 // (Optional) Setup the paper size and orientation

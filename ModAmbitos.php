@@ -56,7 +56,7 @@ $ambitos = new CMySQL1($conn, $sql1, array($idcurso,$sec,$idalumno));
         <table class="table table-responsive-sm table-bordered table-hover table-small" id="ambitos">
             <thead>
             <tr>
-                <th rowspan="2">AMBITOS DE DESARROLLO Y APRENDIZAJE</th>
+                <th rowspan="1">AMBITOS DE DESARROLLO Y APRENDIZAJE</th>
                 <th colspan="4">PRIMER QUIMESTRE</th>
                 <th colspan="4">SEGUNDO QUIMESTRE</th>
             </tr>
