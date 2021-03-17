@@ -119,10 +119,10 @@ $band=0;
 
     $sql = "SELECT cursos.curso, cursos.idcurso, matricula.Nmatricula, alumnos.idalumno, alumnos.ci, alumnos.alumno, alumnos.sexo 
             FROM cursos 
-            INNER JOIN matricula ON cursos.idcurso=matricula.idcurso
+            INNER JOIN matricula ON cursos.idcurso=matricula.idcurso and matricula.idperiodo=?
             INNER JOIN alumnos ON matricula.idalumno=alumnos.idalumno and alumnos.ci=?";
 
-    $usuario_datos=new CMySQL1($conn,$sql,array($_POST['user']));
+    $usuario_datos=new CMySQL1($conn,$sql,array($Oper->Row['idperiodo'],$_POST['user']));
 
 /*if ($usuario_datos->GetNRows() == 0){
 	$band=1;
