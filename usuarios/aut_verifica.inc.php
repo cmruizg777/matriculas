@@ -114,11 +114,20 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
 //mysql_select_db("$sql_db"); and substring(ci,length(ci)-3,length(ci))=?
 $conn=getDatabaseConnection1($_POST['base'],$_POST['server']);
 $band=0;
-$usuario_datos=new CMySQL1($conn,"SELECT `idalumno`, `ci`, `alumno`,sexo from alumnos where ci=? ",array($_POST['user']));
-if ($usuario_datos->GetNRows() == 0){
+
+    $Oper=new CMySQL1($conn,"select idperiodo from periodo  order by idperiodo desc limit 1 ",[]);
+
+    $sql = "SELECT cursos.curso, cursos.idcurso, matricula.Nmatricula, alumnos.idalumno, alumnos.ci, alumnos.alumno, alumnos.sexo 
+            FROM cursos 
+            INNER JOIN matricula ON cursos.idcurso=matricula.idcurso
+            INNER JOIN alumnos ON matricula.idalumno=alumnos.idalumno and alumnos.ci=?";
+
+    $usuario_datos=new CMySQL1($conn,$sql,array($_POST['user']));
+
+/*if ($usuario_datos->GetNRows() == 0){
 	$band=1;
 	$usuario_datos=new CMySQL1($conn,"SELECT  `ci`, `alumnos` as alumno from preinscripcion where ci=?",array($_POST['user']));
-}
+}*/
 
 if ($usuario_datos->GetNRows() != 0) {
 
@@ -131,8 +140,8 @@ if ($usuario_datos->GetNRows() != 0) {
 		 header ("Location: $redir?error_login=3&idinst=".$_POST['id']."&server=".$_POST['server']);
 	    exit;
 	}
-    $Oper=new CMySQL1($conn,"select idperiodo from periodo  order by idperiodo desc limit 1 ",[]);
-	$OCurso=new CMySQL1($conn,"SELECT cursos.curso, cursos.idcurso FROM alumnos,matricula,cursos WHERE cursos.idcurso=matricula.idcurso and alumnos.idalumno=matricula.idalumno and matricula.estado=1 and alumnos.idalumno=? and matricula.idperiodo=?",array($usuario_datos->Row['idalumno'],$Oper->Row['idperiodo']));
+
+	//$OCurso=new CMySQL1($conn,"SELECT cursos.curso, cursos.idcurso FROM alumnos,matricula,cursos WHERE cursos.idcurso=matricula.idcurso and alumnos.idalumno=matricula.idalumno and matricula.estado=1 and alumnos.idalumno=? and matricula.idperiodo=?",array($usuario_datos->Row['idalumno'],$Oper->Row['idperiodo']));
 	if($band==0)
   	 setcookie('id_alumno',$usuario_datos->Row['idalumno'],time() + 365 * 24 * 60 * 60,'/');
 	else
@@ -146,8 +155,8 @@ if ($usuario_datos->GetNRows() != 0) {
 	 setcookie('band',$band,time() + 365 * 24 * 60 * 60,'/');
    	setcookie('base',$_POST['base'],time() + 365 * 24 * 60 * 60,'/');
 	setcookie('server',$_POST['server'],time() + 365 * 24 * 60 * 60,'/');
-	setcookie('curso',$OCurso->Row['curso'],time() + 365 * 24 * 60 * 60,'/');
-    setcookie('id_curso',$OCurso->Row['idcurso'],time() + 365 * 24 * 60 * 60,'/');
+	setcookie('curso',$usuario_datos->Row['curso'],time() + 365 * 24 * 60 * 60,'/');
+    setcookie('id_curso',$usuario_datos->Row['idcurso'],time() + 365 * 24 * 60 * 60,'/');
     // definimos usuario_nivel con el Nivel de acceso del usuario de nuestra BD de usuarios
     // Hacemos una llamada a si mismo (scritp) para que queden disponibles
     // las variables de session en el array asociado $HTTP_...

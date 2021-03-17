@@ -140,12 +140,19 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="index.php?forma=ModAlumnos.php" class="nav-link active">
-                                    <i class="nav-icon fas fa-edit"></i>
-                                    <p>Actualizar Datos</p>
-                                </a>
-                            </li>
+
+                            <?php
+                            if ($Ocole->Row['notas'] == 1){
+                                ?>
+                                <li class="nav-item">
+                                    <a href="index.php?forma=ModAlumnos.php" class="nav-link active">
+                                        <i class="nav-icon fas fa-edit"></i>
+                                        <p>Actualizar Datos</p>
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                            ?>
                             <?php
                             if ($Ocole->Row['notas'] == 1){
                                 ?>

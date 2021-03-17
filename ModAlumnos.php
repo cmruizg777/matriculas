@@ -902,14 +902,14 @@ $Oestu = new CMySQL1($conn, "SELECT idalumno, alumno FROM alumnos WHERE (alumno 
                         }
                     }
                     if (counter == 0){
-                        $('#btnSave').attr('disabled', true);
+                        //$('#btnSave').attr('disabled', true);
                         var str = $("#NuevoCli").serialize();
                         $.ajax({
                             url: 'AjaxModAlumno.php',
                             type: 'POST',
                             data: str,
                         }).done(function (respuesta) {
-                            //console.log(respuesta);
+                            console.log(respuesta);
                             if (respuesta != 0) {
                                 alertify.success('Sus Datos se Actualizaron Correctamente');
                                 $("#idalumno").val(respuesta);
