@@ -117,10 +117,14 @@ $band=0;
 
     $Oper=new CMySQL1($conn,"select idperiodo from periodo  order by idperiodo desc limit 1 ",[]);
 
-    $sql = "SELECT cursos.curso, cursos.idcurso, matricula.Nmatricula, alumnos.idalumno, alumnos.ci, alumnos.alumno, alumnos.sexo 
+    $sql = "SELECT  cursos.curso, cursos.idcurso, cursos.idmodo, matricula.Nmatricula, especialidad.secuencia, 
+                    alumnos.idalumno, alumnos.ci, alumnos.alumno, alumnos.sexo, periodo.idperiodo 
             FROM cursos 
-            INNER JOIN matricula ON cursos.idcurso=matricula.idcurso and matricula.idperiodo=?
-            INNER JOIN alumnos ON matricula.idalumno=alumnos.idalumno and alumnos.ci=?";
+            INNER JOIN matricula ON cursos.idcurso=matricula.idcurso
+            INNER JOIN periodo ON matricula.idperiodo=periodo.idperiodo and periodo.idperiodo=?
+            INNER JOIN alumnos ON matricula.idalumno=alumnos.idalumno  and alumnos.ci=?
+            INNER JOIN especialidad ON cursos.idespecialidad=especialidad.idespecialidad
+            LIMIT 1";
 
     $usuario_datos=new CMySQL1($conn,$sql,array($Oper->Row['idperiodo'],$_POST['user']));
 
@@ -149,6 +153,8 @@ if ($usuario_datos->GetNRows() != 0) {
 	
    	 setcookie('alumno',$usuario_datos->Row['alumno'],time() + 365 * 24 * 60 * 60,'/');
 	 setcookie('ci',$usuario_datos->Row['ci'],time() + 365 * 24 * 60 * 60,'/');
+	 setcookie('secuencia',$usuario_datos->Row['secuencia'],time() + 365 * 24 * 60 * 60,'/');
+	 setcookie('idmodo',$usuario_datos->Row['idmodo'],time() + 365 * 24 * 60 * 60,'/');
 	 setcookie('sexo',($band==0)?$usuario_datos->Row['sexo']:'H',time() + 365 * 24 * 60 * 60,'/');
 	 setcookie('usuario_nivel',5,time() + 365 * 24 * 60 * 60,'/');
 	 setcookie('periodo',$Oper->Row['idperiodo'],time() + 365 * 24 * 60 * 60,'/');

@@ -15,6 +15,13 @@ for($i=0;$i<count($Oinicial);$i++)
     $sini.=substr(trim($Oinicial[$i]),0,1);
 
 $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
+
+$idmodo = $_COOKIE['idmodo'];
+$modnotas = 'ModNotas.php';
+if ($idmodo == 2) {
+    $modnotas = 'ModAmbitos.php';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -90,7 +97,7 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
                 if ($Ocole->Row['notas'] == 1){
                     ?>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="index.php?forma=ModNotas.php" class="nav-link"><i class="fas fa-table"></i> Notas</a>
+                        <a href="index.php?forma=<?php echo $modnotas ;?>" class="nav-link"><i class="fas fa-table"></i> Notas</a>
                     </li>
             <?php
                 }
@@ -142,7 +149,7 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
                         <ul class="nav nav-treeview">
 
                             <?php
-                            if ($Ocole->Row['notas'] == 1){
+                            if ($Ocole->Row['datos'] == 1){
                                 ?>
                                 <li class="nav-item">
                                     <a href="index.php?forma=ModAlumnos.php" class="nav-link active">
@@ -157,7 +164,7 @@ $forma=($_GET['forma']=="")?"ModAlumnos.php":$_GET['forma'];
                             if ($Ocole->Row['notas'] == 1){
                                 ?>
                                 <li class="nav-item">
-                                    <a href="index.php?forma=ModNotas.php" class="nav-link active">
+                                    <a href="index.php?forma=<?php echo $modnotas ;?>" class="nav-link active">
                                         <i class="nav-icon fas fa-table"></i>
                                         <p>Notas</p>
                                     </a>
